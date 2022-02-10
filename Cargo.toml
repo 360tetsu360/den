@@ -11,3 +11,4 @@ den-macro = { path = "./den-macro" }
 
 [dev-dependencies]
 bytes = "0.5"
+byteorder = "1.4.3"
