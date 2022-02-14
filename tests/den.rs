@@ -7,29 +7,33 @@ struct Hoge {
     i8 : i8,
     #[den(with = "Big")]
     u16 : u16,
-    #[den(with = "Little")]
     u16_le : u16,
     #[den(with = "Big")]
     i16 : i16,
-    #[den(with = "Little")]
     i16_le : i16,
     #[den(with = "Big")]
     u32 : u32,
-    #[den(with = "Little")]
     u32_le : u32,
     #[den(with = "Big")]
     i32 : i32,
-    #[den(with = "Little")]
     i32_le : i32,
     #[den(with = "Big")]
     u64 : u64,
-    #[den(with = "Little")]
     u64_le : u64,
     #[den(with = "Big")]
     i64 : i64,
-    #[den(with = "Little")]
     i64_le : i64,
-    bool : bool
+    bool : bool,
+    #[den(with = "U24")]
+    u24 : u32,
+    #[den(with = "Var")]
+    var_u32 : u32,
+    #[den(with = "Var")]
+    var_i32 : i32,
+    #[den(with = "Var")]
+    var_u64 : u64,
+    #[den(with = "Var")]
+    var_i64 : i64,
 }
 
 #[test]
@@ -50,8 +54,12 @@ fn den() {
         i64: -0x8,
         i64_le: -0x800000000000000,
         bool: false,
+        u24 : 0xF00000,
+        var_u32: 0x1000,
+        var_i32: -0x2100,
+        var_u64: 0x2000000,
+        var_i64: -0x20000000,
     };
-    assert_eq!(hoge.size(),59);
 
     let mut bytes = BytesMut::new();
     hoge.encode(&mut bytes);

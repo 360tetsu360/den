@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 bytes = "0.5"
 byteorder = "1.4.3"
+minecraft-varint = { git = "https://github.com/360tetsu360/minecraft-varint" }

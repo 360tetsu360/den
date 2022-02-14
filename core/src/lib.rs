@@ -4,8 +4,12 @@ use bytes::BytesMut;
 use std::io::{Cursor, Result};
 pub(crate) mod big_endian;
 pub(crate) mod little_endian;
+pub(crate) mod var;
+pub(crate) mod u24;
 pub use big_endian::Big;
-pub use little_endian::Little;
+pub use little_endian::*;
+pub use var::Var;
+pub use u24::U24;
 
 pub trait Den {
     fn decode(bytes: &mut Cursor<&[u8]>) -> Result<Self>
